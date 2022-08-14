@@ -3,7 +3,7 @@
             <my-button 
             v-for="index of countries" 
             :key="index.id" 
-            @click="$emit('switch', index)">{{index.location.name}}</my-button>
+            @click="$emit('switch', index)">{{index.name}}</my-button>
       </div>
 </template>
 
@@ -13,7 +13,7 @@
         countries: {
             type:Array,
             required:true
-        }
+        },
        }
     }         
 </script>

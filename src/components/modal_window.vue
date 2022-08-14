@@ -4,7 +4,7 @@
                 <p>enter the api key</p>
                 <my-input v-model:input="red" @keyup.enter="$emit('enterHTTP', red)"></my-input>
                 <span>чтобы получить ключ, вы можете зарегестрироваться на сайте 
-                    <a href="https://www.weatherapi.com/docs/">сайте</a>
+                    <a href="https://openweathermap.org">сайте</a>
                 </span>
         </div>
     </div>

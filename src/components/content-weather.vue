@@ -2,7 +2,7 @@
 <div class="weather-block">
         <geolocation :selectedItem="selectedItem"></geolocation>  
         <weather :selectedItem="selectedItem"></weather>
-        <footer_coutry :countries="countries" @switch="$emit('switch',$event)"></footer_coutry>
+        <footer_coutry  :countries="countries" @switch="$emit('switch',$event)"></footer_coutry>
 </div>
 </template>
 

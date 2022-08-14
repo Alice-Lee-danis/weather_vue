@@ -18,22 +18,20 @@ import axios from 'axios'
     export default{
         data(){
           return {
-            httpAnswer:[
-              
-            ],
+            httpAnswer:[],
             countries: [],
             selectedItem:{},
             boolModalWindow: true,
-            inputHTTPKey:'',
+            inputHTTPKey:'', 
           }
         },
         methods:{
           updateInputHK(event){
             this.inputHTTPKey = event
             this.httpAnswer = [
-              `http://api.weatherapi.com/v1/current.json?key=${event}&q&q=Kubanskiy&aqi=no`,
-              `http://api.weatherapi.com/v1/current.json?key=${event}=Moscow&aqi=no`,
-              `http://api.weatherapi.com/v1/current.json?key=${event}=Novosibirsk&aqi=no`,
+              `http://api.openweathermap.org/data/2.5/weather?q=Novosibirsk&lang=ru&units=metric&appid=${event}`,
+              `http://api.openweathermap.org/data/2.5/weather?q=Moscow&lang=ru&units=metric&appid=${event}`,
+              `http://api.openweathermap.org/data/2.5/weather?q=Kazan&lang=ru&units=metric&appid=${event}`,
             ]
              this.boolModalWindow = false;
              this.findCelies();
@@ -43,28 +41,22 @@ import axios from 'axios'
            this.boolModalWindow = false;
            animation();
           },
-
           weatherСhange(item){
-          this.selectedItem = {city: item.location.name,
-                              id:item.location.localtime,
-                              country:item.location.country,
-                              degree:item.current.temp_c,
-                              localtime:item.location.localtime
+          this.selectedItem = {city: item.name,
+                              id:item.timezone,
+                              degree:item.main.temp,
+                              localTime:item.timezone
           }
-          
           },
           async findCelies(){
-            console.log('as')
            for(let index of this.httpAnswer){
              try {
                 let b = await axios.get(index)
                 this.countries.unshift(b.data)
               }
               catch(err){
-                console.log(err)
               }
            }
-           console.log(this.countries)
           }
         },
         components: {footer_coutry,content_weather,modal_window}
@@ -75,7 +67,7 @@ import axios from 'axios'
     * {
     margin: 0;
     padding: 0;
-    font-family: helios;
+    font-family: Helios;
     font-size: 20px;
     color:#333629;
     }
@@ -86,10 +78,6 @@ import axios from 'axios'
 
     h1{
     font-size: 35px;
-    }
-
-    h2 {
-    font-size: 30px;
     }
 
     body {

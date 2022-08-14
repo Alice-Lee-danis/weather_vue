@@ -1,5 +1,5 @@
 <template>
-    <div v-if='Object.keys(this.selectedItem).length !== 0' class="weather-block_temperature"><h1>{{temasp}}</h1></div>
+    <div v-if='Object.keys(this.selectedItem).length !== 0' class="weather-block_temperature"><h1>{{temp}}</h1></div>
 </template>
 
 <script>
@@ -11,8 +11,8 @@
         },
        },
        computed: {
-        temasp(){
-            return this.selectedItem.degree + '°C' 
+        temp(){
+            return Math.round(this.selectedItem.degree) + '°C' 
         }
        }
     }
